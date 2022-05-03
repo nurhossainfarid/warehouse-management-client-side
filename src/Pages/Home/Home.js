@@ -1,14 +1,11 @@
 import React from 'react';
-import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
 import './Home.css'
+import Inventory from './Inventory/Inventory';
 
 const Home = () => {
     return (
         <div>
-            <h3>Home page</h3>
-            <Header></Header>
-            <Footer></Footer>
+            <Inventory></Inventory>
         </div>
     );
 };
