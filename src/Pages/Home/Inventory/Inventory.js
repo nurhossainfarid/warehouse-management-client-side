@@ -8,7 +8,7 @@ const Inventory = () => {
     //         setItems(response);
     // })
     useEffect(() => {
-        const url = 'http://localhost:5000/items';
+        const url = 'https://salty-beach-12197.herokuapp.com/items';
         fetch(url)
             .then(res => res.json())
             .then(data => {
