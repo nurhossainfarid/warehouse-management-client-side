@@ -7,16 +7,22 @@ import auth from '../../firebase.init';
 const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
+    // use navigate
     const navigate = useNavigate();
-    let location = useLocation();
-    let from = location.state?.from?.pathname || "/";
+    // use location
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || "/";
+
     const [
         signInWithEmailAndPassword,
         user,
+        error,
+        loading
     ] = useSignInWithEmailAndPassword(auth);
 
     if (user) {
-        navigate(from , {replace: true});
+        navigate(from, { replace: true });
     }
 
     const handleSubmit = event => {
@@ -27,10 +33,10 @@ const Login = () => {
     }
     return (
         <div>
-            <Form onClick={handleSubmit} className='w-50 mx-auto'>
+            <Form onSubmit={handleSubmit} className='w-50 mx-auto'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control ref={emailRef} type="email" name='email' placeholder="Enter email" />
+                    <Form.Control ref={emailRef} type="email" name='email' placeholder="Enter email" required />
                     <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
                     </Form.Text>
@@ -38,12 +44,13 @@ const Login = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control ref={passwordRef} type="password" name='password' placeholder="Password" />
+                    <Form.Control ref={passwordRef} type="password" name='password' placeholder="Password" required />
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
+                {/* show error add loading message */}
+                <p className='text-xl text-red-600'>{error?.message}</p>
+                <p className='text-xl text-red-600'>{loading?.message}</p>
+                    
                 <Button variant="primary" type="submit">
                     Login
                 </Button>

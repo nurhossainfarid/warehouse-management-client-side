@@ -10,7 +10,9 @@ const Registration = () => {
     const passwordRef = useRef('');
     const [
         createUserWithEmailAndPassword,
-        user
+        user,
+        error,
+        loading
       ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
 
 
@@ -22,7 +24,7 @@ const Registration = () => {
     }
     return (
         <div>
-            <Form onClick={handleSubmit} className='w-50 mx-auto'>
+            <Form onSubmit={handleSubmit} className='w-50 mx-auto'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Name</Form.Label>
                     <Form.Control type="text" placeholder="Enter your name" />
@@ -30,7 +32,7 @@ const Registration = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control ref={emailRef} type="email" placeholder="Enter email" />
+                    <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
                     <Form.Text className="text-muted">
                     We'll never share your email with anyone else.
                     </Form.Text>
@@ -38,7 +40,7 @@ const Registration = () => {
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control ref={passwordRef} type="password" placeholder="Password" />
+                    <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -46,10 +48,10 @@ const Registration = () => {
                     <Form.Control type="tel" placeholder="Your phone number" />
                 </Form.Group>
 
+                {/* show error add loading message */}
+                <p className='text-xl text-red-600'>{error?.message}</p>
+                <p className='text-xl text-red-600'>{loading?.message}</p>
 
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
                 <Button variant="primary" type="submit">
                     Registration
                 </Button>

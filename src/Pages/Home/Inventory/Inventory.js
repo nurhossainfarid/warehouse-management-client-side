@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import './Inventory.css'
 
 const Inventory = () => {
     const [items, setItems] = useState([]);
-    // axios.get('http://localhost:5000/items')
-    //     .then(response => {
-    //         setItems(response);
-    // })
+    const { itemID } = useParams();
+    const navigate = useNavigate();
+
+    const navigateItemDetails = id => {
+        navigate(`/itemsDetails/${id}`)
+    }
     useEffect(() => {
         const url = 'https://salty-beach-12197.herokuapp.com/items';
         fetch(url)
@@ -14,7 +17,7 @@ const Inventory = () => {
             .then(data => {
             setItems(data)
         })
-    }, [])
+    }, [itemID])
     return (
         <div className='grid md:grid-cols-3 gap-5'>
             {
@@ -26,7 +29,7 @@ const Inventory = () => {
                         <h5>Price: ${item.price}</h5>
                         <h6>Available: {item.quantity}</h6>
                         <p className='mb-0'>Supplier: {item.supplierName}</p>
-                        <button className='bg-cyan-500 hover:bg-cyan-600 text-white w-2/6 rounded  py-1 text-uppercase'>Update</button>
+                            <button onClick={() => navigateItemDetails(item._id)} className='bg-cyan-500 hover:bg-cyan-600 text-white w-2/6 rounded  py-1 text-uppercase'>Update</button>
                     </div>
                 )
             }
