@@ -53,5 +53,4 @@ function ControlledCarousel() {
     );
   }
   
-render(<ControlledCarousel />);
   export default ControlledCarousel

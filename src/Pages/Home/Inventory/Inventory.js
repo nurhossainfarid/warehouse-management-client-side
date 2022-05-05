@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
 import './Inventory.css'
+import InventoryItem from './InventoryItem/InventoryItem';
 
 const Inventory = () => {
     const [items, setItems] = useState([]);
-    const { itemID } = useParams();
-    const navigate = useNavigate();
 
-    const navigateItemDetails = id => {
-        navigate(`/itemsDetails/${id}`)
-    }
     useEffect(() => {
         const url = 'https://salty-beach-12197.herokuapp.com/items';
         fetch(url)
@@ -17,21 +12,12 @@ const Inventory = () => {
             .then(data => {
             setItems(data)
         })
-    }, [itemID])
+    }, [])
     return (
         <div className='grid md:grid-cols-3 gap-5'>
             {
-                items.map(item => 
-                    <div key={item._id}>
-                        <img src={item.img} alt="" />
-                        <h5>{item.name}</h5>
-                        <p>Message: {item.shortDescription}</p>
-                        <h5>Price: ${item.price}</h5>
-                        <h6>Available: {item.quantity}</h6>
-                        <p className='mb-0'>Supplier: {item.supplierName}</p>
-                            <button onClick={() => navigateItemDetails(item._id)} className='bg-cyan-500 hover:bg-cyan-600 text-white w-2/6 rounded  py-1 text-uppercase'>Update</button>
-                    </div>
-                )
+                items.map(item => <InventoryItem key={item._id} item={item}></InventoryItem>
+                ).slice(0, 6)
             }
         </div>
     );

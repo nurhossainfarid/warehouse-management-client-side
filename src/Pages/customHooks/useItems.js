@@ -1,16 +1,17 @@
-import { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 
-const useItems = itemID => {
-    const [items, setItems] = useState();
-    const url = 'https://salty-beach-12197.herokuapp.com/items';
+const useItems = () => {
+    const [items, setItems] = useState([]);
+
     useEffect(() => {
+        const url = 'https://salty-beach-12197.herokuapp.com/items';
         fetch(url)
-        .then(res => res.json())
-        .then(data => {
-        setItems(data)
+            .then(res => res.json())
+            .then(data => {
+            setItems(data)
         })
-    }, [itemID])
-    return [items, setItems]
+    }, [])
+    return [items, setItems];
 };
 
 export default useItems;
