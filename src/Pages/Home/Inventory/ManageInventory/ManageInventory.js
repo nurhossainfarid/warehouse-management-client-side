@@ -1,12 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
-import useItemDetails from '../../../customHooks/useItemDetails';
+
+
 
 
 const ManageInventory = () => {
     const { itemID } = useParams();
-    const [item] = useItemDetails();
+    const [item, setItem] = useState([]);
+    // handle delete one
+    const handleDelete = id => {
+        const proceed = window.confirm('Are you sure');
+        if (proceed) {
+            const url = `https://salty-beach-12197.herokuapp.com/items/${id}`;
+            fetch(url, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    const remaining = item.filter(i => i._id !== id);
+                    setItem(remaining)
+            })
+        }
+    }
     const [items, setItems] = useState([]);
 
     useEffect(() => {
@@ -40,7 +57,7 @@ const ManageInventory = () => {
                                 <td>{item.price}</td>
                                 <td>{item.quantity}</td>
                                 <td>{item.supplierName}</td>
-                                <td><button className='text-red-500 font-bold'>X</button></td>
+                                <td><button onClick={() => handleDelete(itemID)} className='text-red-500 font-bold'>X</button></td>
                             </tr>
                         </tbody>
                         </Table>
