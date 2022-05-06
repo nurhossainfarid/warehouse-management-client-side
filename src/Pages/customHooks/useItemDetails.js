@@ -11,6 +11,5 @@ const useItemDetails = itemID => {
         })
     }, [itemID])
     return [item, setItem];
-};
-
+}
 export default useItemDetails;

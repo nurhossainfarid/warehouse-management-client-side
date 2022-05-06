@@ -1,18 +1,12 @@
-import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState } from 'react';
+import useItems from '../../customHooks/useItems';
 import './Inventory.css'
 import InventoryItem from './InventoryItem/InventoryItem';
 
 const Inventory = () => {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useItems();
 
-    useEffect(() => {
-        const url = 'https://salty-beach-12197.herokuapp.com/items';
-        fetch(url)
-            .then(res => res.json())
-            .then(data => {
-            setItems(data)
-        })
-    }, [])
+
     return (
         <div className='grid md:grid-cols-3 gap-5'>
             {
