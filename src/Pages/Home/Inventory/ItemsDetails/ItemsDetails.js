@@ -9,13 +9,33 @@ const ItemsDetails = () => {
     const [availableQuantity, setAvailableQuantity] = useState([]);
     const quantityRef = useRef();
     const { img, name, _id, price, shortDescription, quantity, supplierName } = item;
-    let available = quantity;
+
     const handleDelivered = event => {
+        event.preventDefault();
+        let available = quantityRef.current.value;
         console.log(available);
         available = available - 1;
         console.log(available);
         setAvailableQuantity(available);
+        
+        // send data to server 
+        const url = `https://salty-beach-12197.herokuapp.com/items/${itemID}`
+        fetch(url, {
+            method: "PUT",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(availableQuantity)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('Success data load', data);
+                event.target.reset();
+                alert('user Update successfully')
+        })
     }
+
+
     const navigatedManageInventory = id => {
         navigate(`/manageInventory/${id}`)
     }
@@ -27,9 +47,7 @@ const ItemsDetails = () => {
                 <h4>Device Name : {name}</h4>
                 <p>Message : {shortDescription}</p>
                 <div>
-                    <label htmlFor="">Available : <input type="number" ref={quantityRef} className='border-0 bg-white' value={
-                        handleDelivered === true ? availableQuantity : quantity
-                    } disabled /></label>
+                    <label htmlFor="">Available : <input type="number" ref={quantityRef} className='border-0 bg-white' value={quantity} disabled /></label>
                 </div>
                 <p className='font-bold'>Price : ${price}</p>
                 <h6>Supplier : {supplierName}</h6>
