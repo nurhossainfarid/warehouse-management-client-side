@@ -1,12 +1,12 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import useItemDetails from '../../../customHooks/useItemDetails';
 
 const ItemsDetails = () => {
     const { itemID } = useParams();
     const [item] = useItemDetails(itemID);
+    // const [newAvailable, setNewAvailable] = useState([]);
     const navigate = useNavigate();
-    const [availableQuantity, setAvailableQuantity] = useState([]);
     const quantityRef = useRef();
     const { img, name, _id, price, shortDescription, quantity, supplierName } = item;
 
@@ -14,23 +14,22 @@ const ItemsDetails = () => {
         event.preventDefault();
         let available = quantityRef.current.value;
         console.log(available);
-        available = available - 1;
-        console.log(available);
-        setAvailableQuantity(available);
-        
+        let newQuantity = parseInt(available - 1);
+        console.log(newQuantity);
         // send data to server 
-        const url = `https://salty-beach-12197.herokuapp.com/items/${itemID}`
+        const url = `http://localhost:5000/items/${itemID}`
         fetch(url, {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(availableQuantity)
+            body: JSON.stringify({newQuantity})
         })
             .then(res => res.json())
             .then(data => {
                 console.log('Success data load', data);
-                event.target.reset();
+                // const remaining = available.filter(item => item._id !== itemID); 
+                // setNewAvailable(remaining);
                 alert('user Update successfully')
         })
     }
