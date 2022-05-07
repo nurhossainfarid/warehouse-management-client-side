@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import CustomLink from './CustomLink/CustomLink';
 import './Header.css';
 import logo from '../../img/laptop-logo.png'
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -14,26 +15,26 @@ const Header = () => {
       };
     return (
         <div>
-            <Navbar collapseOnSelect expand="lg" className='bg-cyan-400'>
+            <Navbar collapseOnSelect expand="lg" className='bg-white'>
             <Container>
                     <Navbar.Brand className='flex justify-center items-center' as={Link} to={'/home'}>
-                        <img src={logo} width={50} alt="" />
-                        <span>Lapotopo House Center</span>
+                        <img src={logo} width={50} height={50} alt="" />
+                        <span className='text-cyan-500 font-bold'>Lapotopo House Center</span>
                     </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="me-auto">
-                <Nav.Link as={Link} to={'/home'}>Home</Nav.Link>
+                <Nav className="me-auto md:gap-2">
+                <Nav.Link as={CustomLink} to={'/home'}>Home</Nav.Link>
                 {
                                 user ? 
                                     <>
-                                        <Nav.Link as={Link} to={'/manageInventory/:inventoryID'}>Manage Inventory</Nav.Link>
-                                        <Nav.Link as={Link} to={'/addNewItem'}>Add New</Nav.Link>
-                                        <Nav.Link as={Link} to={'/myItems'}>My Items</Nav.Link>
+                                        <Nav.Link as={CustomLink} to={'/manageInventory/:inventoryID'}>Manage Inventory</Nav.Link>
+                                        <Nav.Link as={CustomLink} to={'/addNewItem'}>Add New</Nav.Link>
+                                        <Nav.Link as={CustomLink} to={'/myItems'}>My Items</Nav.Link>
                                         <button onClick={logout}>Sign out</button>
                                     </>
                                 :
-                                    <Nav.Link as={Link} to={'/login'}>Login</Nav.Link>                
+                                    <Nav.Link as={CustomLink} to={'/login'}>Login</Nav.Link>                
                 }
                 </Nav>
             </Navbar.Collapse>

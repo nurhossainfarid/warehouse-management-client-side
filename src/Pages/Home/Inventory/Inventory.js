@@ -8,11 +8,14 @@ const Inventory = () => {
 
 
     return (
-        <div className='grid md:grid-cols-3 gap-5'>
+        <div className='mx-5 mt-5'>
+            <h3 className='text-center'>Our Products</h3>
+            <div className='grid md:grid-cols-3 gap-5'>
             {
                 items.map(item => <InventoryItem key={item._id} item={item}></InventoryItem>
                 ).slice(0, 6)
             }
+        </div>
         </div>
     );
 };

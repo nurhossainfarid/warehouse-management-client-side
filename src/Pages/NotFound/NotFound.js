@@ -2,8 +2,8 @@ import React from 'react';
 
 const NotFound = () => {
     return (
-        <div>
-            <h1 className='text-2xl text-red-700'>Sorry this page is Not Found this time</h1>
+        <div className='w-full'>
+            <img className='w-full' src="https://www.futurezone.de/wp-content/uploads/sites/11/2021/09/Error-404-Not-Found.jpg" alt="" />
         </div>
     );
 };
