@@ -34,11 +34,9 @@ const ItemsDetails = () => {
     // add quantity 
     const handleAddQuantity = event => {
         event.preventDefault();
-        const previousQuantity = parseInt(quantityRef.current.value);
-        console.log(previousQuantity);
-        const addQuantity = parseInt(addQuantityRef.current.value);
-        console.log(addQuantity);
-        const currentQuantity = parseInt(previousQuantity + addQuantity);
+        const previousQuantity = quantityRef.current.value;
+        const addQuantity = addQuantityRef.current.value;
+        let newQuantity = parseInt(parseInt(previousQuantity) + parseInt(addQuantity));
 
         // api for add quantity
         const url = `https://salty-beach-12197.herokuapp.com/items/${itemID}`;
@@ -47,13 +45,14 @@ const ItemsDetails = () => {
             headers: {
                 'Content-Type' : 'application/json'
             },
-            body: JSON.stringify({currentQuantity})
+            body: JSON.stringify({newQuantity})
         })
             .then(res => res.json())
             .then(data => {
                 console.log('Success data load', data);
-                quantityRef.current.value = currentQuantity;
-                alert('user Update successfully')
+                quantityRef.current.value = newQuantity;
+                alert('user Update successfully');
+                addQuantityRef.current.value = '';
         })
 
     }
