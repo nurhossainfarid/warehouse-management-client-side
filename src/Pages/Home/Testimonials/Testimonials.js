@@ -6,7 +6,7 @@ const Testimonials = () => {
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
-        const url = 'http://localhost:5000/comments';
+        const url = 'https://salty-beach-12197.herokuapp.com/comments';
         fetch(url)
             .then(res => res.json())
             .then(data => {

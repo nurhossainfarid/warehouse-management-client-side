@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 const AddComment = event => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        let url = 'http://localhost:5000/comments';
+        let url = 'https://salty-beach-12197.herokuapp.com/comments';
         fetch(url, {
             method: "POST",
             headers: {
