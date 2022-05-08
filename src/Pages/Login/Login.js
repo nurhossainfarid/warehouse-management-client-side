@@ -1,8 +1,12 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import Loading from './Loading/Loading';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { async } from '@firebase/util';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -11,6 +15,11 @@ const Login = () => {
     const navigate = useNavigate();
     // use location
     const location = useLocation();
+
+    // password reset
+    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
+        auth
+      );
 
     const from = location.state?.from?.pathname || '/';
 
@@ -23,6 +32,10 @@ const Login = () => {
 
     const [signInWithGoogle] = useSignInWithGoogle(auth);
 
+    if (loading) {
+        return <Loading></Loading>
+    }
+
     if (user) {
         navigate(from, {replace: true});
     }
@@ -33,6 +46,17 @@ const Login = () => {
         const password = passwordRef.current.value;
         signInWithEmailAndPassword(email, password);
         signInWithGoogle(email, password);
+    }
+
+    const passwordReset = async () => {
+        const email = emailRef.current.value;
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('Sent email');
+        }
+        else{
+            toast('please enter your email address');
+        }
     }
     return (
         <div>
@@ -58,8 +82,10 @@ const Login = () => {
                     Login
                 </Button>
                 <p>If you are new user, please <Link to={'/registration'}><button className='text-xl text-red-500'>Registration Now.</button></Link></p>
+                <button className='bg-cyan-500 hover:bg-cyan-600 text-white hover:text-gray-300 py-1 px-3 rounded' onClick={passwordReset}>Password Reset</button> <br /> <br />
                 <button onClick={() => signInWithGoogle()} className='p-2 text-white bg-cyan-500 text-2xl rounded'>   Login With Google</button>
             </Form>
+            <ToastContainer />
         </div>
     );
 };

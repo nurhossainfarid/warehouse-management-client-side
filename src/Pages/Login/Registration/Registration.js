@@ -3,7 +3,9 @@ import { Button, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import './Registration.css'
+import Loading from '../Loading/Loading';
+import './Registration.css';
+
 
 const Registration = () => {
     const emailRef = useRef('');
@@ -18,6 +20,10 @@ const Registration = () => {
     
     if (user) {
         navigate('/home');
+    }
+
+    if (loading) {
+        return <Loading></Loading>
     }
 
     function handleSubmit(event) {
