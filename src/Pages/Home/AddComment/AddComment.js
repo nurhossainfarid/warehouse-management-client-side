@@ -21,7 +21,7 @@ const AddComment = event => {
     };
     return (
         <div className='w-50 mx-auto mt-3'>
-        <h3>Your Comment</h3>
+        <h3 className='text-cyan-500 font-bold'>Your Comment</h3>
         <form className='d-flex flex-column gap-3' onSubmit={handleSubmit(onSubmit)}>
             <input className='border-2 border-gray-400 p-2 rounded text-black' type="text" placeholder='Enter product name' {...register("name", { required: true, maxLength: 50 })} />
             <textarea className='border-2 border-gray-400 p-2 rounded' placeholder='Comment' {...register("comment")} />

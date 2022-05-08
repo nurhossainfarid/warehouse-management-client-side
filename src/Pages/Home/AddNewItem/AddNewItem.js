@@ -1,12 +1,26 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
 
 const AddNewItem = () => {
+    const [user] = useAuthState(auth);
 
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         let url = 'https://salty-beach-12197.herokuapp.com/items';
         fetch(url, {
+            method: "POST",
+            headers: {
+                "content-type": 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => console.log(result));
+        
+        let url2 = 'https://salty-beach-12197.herokuapp.com/myItems';
+        fetch(url2, {
             method: "POST",
             headers: {
                 "content-type": 'application/json'
@@ -22,6 +36,7 @@ const AddNewItem = () => {
         <h3>Add New Item</h3>
         <form className='d-flex flex-column gap-3' onSubmit={handleSubmit(onSubmit)}>
             <input className='border-2 border-gray-400 p-2 rounded text-black' type="text" placeholder='Enter product name' {...register("name", { required: true, maxLength: 50 })} />
+            <input className='border-2 border-gray-400 p-2 rounded text-black' type="email" value={user?.email} {...register(`email`)}  />
             <input className='border-2 border-gray-400 p-2 rounded text-black' placeholder='Price' type="number" {...register("price")} />
             <textarea className='border-2 border-gray-400 p-2 rounded' placeholder='Message' {...register("shortDescription")} />
             <input className='border-2 border-gray-400 p-2 rounded text-black' placeholder='Quantity' type="number" {...register("quantity")} />

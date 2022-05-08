@@ -22,6 +22,16 @@ const ManageInventory = () => {
                     const remaining = items.filter(item => item._id !== id);
                     setItems(remaining)
             })
+            const url2 = `https://salty-beach-12197.herokuapp.com/myItems/${id}`;
+            fetch(url2, {
+                method: "DELETE"
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    const remaining = items.filter(item => item._id !== id);
+                    setItems(remaining)
+            })
         }
     }
     return (
@@ -35,6 +45,7 @@ const ManageInventory = () => {
                     <th>Price</th>
                     <th>Available</th>
                     <th>Supplier</th>
+                    <th>Email</th>
                     </tr>
                 </thead>
             </Table>
@@ -50,6 +61,7 @@ const ManageInventory = () => {
                                     <td>{item.price}</td>
                                     <td>{item.quantity}</td>
                                     <td>{item.supplierName}</td>
+                                    <td>{item.email}</td>
                                     <td><button onClick={() => handleDelete(item._id)} className='text-red-500 font-bold'>X</button></td>
                                 </tr>
                             </tbody>

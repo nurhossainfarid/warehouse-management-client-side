@@ -88,7 +88,7 @@ const ItemsDetails = () => {
 
             {/* Manage Inventory section */}
             <section className='mt-3'>
-                <button onClick={() => navigatedManageInventory(_id)} className="px-3 py-2 bg-cyan-500 hover:bg-cyan-600 rounded">Manage Inventory</button>
+                <button onClick={() => navigatedManageInventory(_id)} className="px-3 py-2 bg-cyan-500 hover:bg-cyan-600 rounded">Manage Inventories</button>
             </section>
         </div>
     );

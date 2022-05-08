@@ -19,8 +19,9 @@ function ControlledCarousel() {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h3>How to buy Installments????</h3>
+            <p>You focus on our job holder and students client. And increase extra installments time for students....</p>
+            <button className="bg-cyan-500 hover:bg-cyan-600 px-3 py-1 rounded text-white hover:text-gray-300 text-xl">Read More</button>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -31,8 +32,9 @@ function ControlledCarousel() {
           />
   
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h3>Life time support</h3>
+            <p>If your company go to agreement with our , then you provide life time support. Know details please click read more button....</p>
+            <button className="bg-cyan-500 hover:bg-cyan-600 px-3 py-1 rounded text-white hover:text-gray-300 text-xl">Read More</button>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -43,10 +45,11 @@ function ControlledCarousel() {
           />
   
           <Carousel.Caption>
-            <h3>Third slide label</h3>
+            <h3>Why we are best????</h3>
             <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              We focus on our customer satisfaction and provide good quality products. If you know about our , please click the read more button....
             </p>
+            <button className="bg-cyan-500 hover:bg-cyan-600 px-3 py-1 rounded text-white hover:text-gray-300 text-xl">Read More</button>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

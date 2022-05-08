@@ -13,6 +13,9 @@ import NotFound from './Pages/NotFound/NotFound';
 import ManageInventory from './Pages/Home/Inventory/ManageInventory/ManageInventory';
 import AddNewItem from './Pages/Home/AddNewItem/AddNewItem';
 import Testimonial from './Pages/Home/Testimonial/Testimonial';
+import MyItems from './Pages/MyItems/MyItems';
+import Block from './Pages/Block/Block';
+import Gallery from './Pages/Gallery/Gallery';
 
 
 
@@ -23,6 +26,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/block' element={<Block></Block>}></Route>
+        <Route path='/gallery' element={<Gallery></Gallery>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/registration' element={<Registration></Registration>}></Route>
         <Route path='/inventory' element={<Inventory></Inventory>}></Route>
@@ -34,6 +39,7 @@ function App() {
         <Route path='/manageInventory/:inventoryID' element={<ManageInventory></ManageInventory>}></Route>
         <Route path='/addNewItem' element={<AddNewItem></AddNewItem>}></Route>
         <Route path='/testimonial' element={<Testimonial></Testimonial>}></Route>
+        <Route path='/myItems' element={<MyItems></MyItems>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

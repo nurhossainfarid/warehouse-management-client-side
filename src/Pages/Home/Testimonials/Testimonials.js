@@ -14,9 +14,9 @@ const Testimonials = () => {
         })
     }, [])
     return (
-        <div className='mx-5 mt-5'>
-            <p className='text-center text-xl'>Testimonials</p>
-            <h3 className='text-center mb-5'>What Our Customers Saying</h3>
+        <div className='px-5 py-4 mt-5 bg-gray-100'>
+            <p className='text-center text-xl text-purple-600 font-semibold'>Testimonials</p>
+            <h3 className='text-center mb-5 text-cyan-500 font-bold'>What Our Customers Saying</h3>
             <div className='grid grid-cols-1 md:grid-cols-3 gap-5'>
             {
                 comments.map(message => <Testimonial key={message._id} message={message}></Testimonial>).slice(0, 3)

@@ -25,13 +25,16 @@ const Header = () => {
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto md:gap-2">
                 <Nav.Link as={CustomLink} to={'/home'}>Home</Nav.Link>
+                <Nav.Link as={CustomLink} to={'/block'}>Block</Nav.Link>
+                <Nav.Link as={CustomLink} to={'/gallery'}>Gallery</Nav.Link>
+                
                 {
                                 user ? 
                                     <>
                                         <Nav.Link as={CustomLink} to={'/manageInventory/:inventoryID'}>Manage Inventory</Nav.Link>
                                         <Nav.Link as={CustomLink} to={'/addNewItem'}>Add New</Nav.Link>
                                         <Nav.Link as={CustomLink} to={'/myItems'}>My Items</Nav.Link>
-                                        <button onClick={logout}>Sign out</button>
+                                        <button className='font-semibold' style={{ color: '#9345ad'}} onClick={logout}>Sign out</button>
                                     </>
                                 :
                                     <Nav.Link as={CustomLink} to={'/login'}>Login</Nav.Link>                

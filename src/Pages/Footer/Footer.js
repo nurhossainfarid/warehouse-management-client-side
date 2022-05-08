@@ -19,12 +19,12 @@ const Footer = () => {
             {/* useful link section */}
             <section className='flex flex-column'>
                 <h5 className='text-cyan-400'>Useful Link</h5>
-                <Link to={'/help'} className='text-gray-300 text-decoration-none'>About us</Link>
-                <Link to={'/ticket'} className='text-gray-300 text-decoration-none'>Block</Link>
-                <Link to={'/contact'} className='text-gray-300 text-decoration-none'>Check Out</Link>
-                <Link to={'/ticket'} className='text-gray-300 text-decoration-none'>Contact</Link>
-                <Link to={'/contact'} className='text-gray-300 text-decoration-none'>Service</Link>
-                <Link to={'/contact'} className='text-gray-300 text-decoration-none'>Shop</Link>
+                <Link to={'/aboutUs'} className='text-gray-300 text-decoration-none'>About us</Link>
+                <Link to={'/block'} className='text-gray-300 text-decoration-none'>Block</Link>
+                <Link to={'/checkout'} className='text-gray-300 text-decoration-none'>Check Out</Link>
+                <Link to={'/contact'} className='text-gray-300 text-decoration-none'>Contact</Link>
+                <Link to={'/service'} className='text-gray-300 text-decoration-none'>Service</Link>
+                <Link to={'/shop'} className='text-gray-300 text-decoration-none'>Shop</Link>
             </section>
 
             <section>
