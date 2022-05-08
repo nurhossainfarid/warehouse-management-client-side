@@ -1,20 +1,24 @@
 import React, { useRef } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import './Registration.css'
 
 const Registration = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
+    const navigate = useNavigate();
     const [
         createUserWithEmailAndPassword,
         user,
         error,
         loading
-      ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
-
+    ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+    
+    if (user) {
+        navigate('/home');
+    }
 
     function handleSubmit(event) {
         event.preventDefault();

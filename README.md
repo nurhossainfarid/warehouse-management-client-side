@@ -1,3 +1,21 @@
+# Lapotopo House Center
+
+## Website Link : https://warehouse-management-e8596.firebaseapp.com/
+
+### Website Review : 
+- This is the Laptop warehouse/inventory management websites. Firstly, in header part we see 4 pages(Home, Blogs, Gallery, Login). Secondly, in the footer part we see 4 column section such as Store location, Use Link,Categories and Open Hour.
+- In the Home page, we see a header (simple navbar), slider, Our Products (inventory items that you are managing. Maximum 6 items),Our Facilities, Testimonial and footer section..
+- In the Blogs page, answer of question.
+- In the Gallery page, it will be update and coming soon.
+- In the Login page, you want to be create a new account and you have an account then you login.
+### frameworks, libraries used in my project.
+- React(Libraries)
+- Bootstrap and tailwind (css frameworks)
+- React Router 
+- React Firebase Hooks
+- Firebase(console.firebase.google.com)
+- Heroku
+- React hooks form
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

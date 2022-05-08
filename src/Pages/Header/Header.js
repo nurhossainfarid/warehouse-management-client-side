@@ -14,7 +14,7 @@ const Header = () => {
         signOut(auth);
       };
     return (
-        <div>
+        <div className='position'>
             <Navbar collapseOnSelect expand="lg" className='bg-white'>
             <Container>
                     <Navbar.Brand className='flex justify-center items-center' as={Link} to={'/home'}>
