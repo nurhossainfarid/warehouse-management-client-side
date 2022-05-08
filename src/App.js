@@ -16,6 +16,7 @@ import Testimonial from './Pages/Home/Testimonial/Testimonial';
 import MyItems from './Pages/MyItems/MyItems';
 import Block from './Pages/Block/Block';
 import Gallery from './Pages/Gallery/Gallery';
+import TestimonialDetails from './Pages/Home/TestimonialDetails.js/TestimonialDetails';
 
 
 
@@ -39,6 +40,7 @@ function App() {
         <Route path='/manageInventory/:inventoryID' element={<ManageInventory></ManageInventory>}></Route>
         <Route path='/addNewItem' element={<AddNewItem></AddNewItem>}></Route>
         <Route path='/testimonial' element={<Testimonial></Testimonial>}></Route>
+        <Route path='/testimonialDetails' element={<TestimonialDetails></TestimonialDetails>}></Route>
         <Route path='/myItems' element={<MyItems></MyItems>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>

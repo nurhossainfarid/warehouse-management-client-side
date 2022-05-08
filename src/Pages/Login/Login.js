@@ -6,7 +6,6 @@ import auth from '../../firebase.init';
 import Loading from './Loading/Loading';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { async } from '@firebase/util';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -17,7 +16,7 @@ const Login = () => {
     const location = useLocation();
 
     // password reset
-    const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(
+    const [sendPasswordResetEmail] = useSendPasswordResetEmail(
         auth
       );
 

@@ -1,10 +1,11 @@
 import React from 'react';
 import './Facilities.css';
+import { SupportIcon } from '@heroicons/react/solid';
 
 const Facilities = () => {
     return (
         <div className='px-5 py-4 mt-3'>
-            <h3 className='text-center text-cyan-500 font-bold'>Our Facilities</h3>
+            <h3 className='text-center text-cyan-500 font-bold flex justify-center items-center gap-1'><SupportIcon width={'30px'}></SupportIcon> Our Facilities</h3>
             <div className='grid md:grid-cols-3 gap-5'>
                 <section className=''>
                     <div className='mb-3'>
